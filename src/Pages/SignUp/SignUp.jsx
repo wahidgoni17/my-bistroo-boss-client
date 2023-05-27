@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useContext } from "react";
 import { updateProfile, getAuth } from "firebase/auth";
+import Swal from "sweetalert2";
 const auth = getAuth();
 const SignUp = () => {
     const { newUser } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const SignUp = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, email, password);
@@ -19,12 +21,16 @@ const SignUp = () => {
     .then(result=>{
         updateProfile(auth.currentUser,{
           displayName: name,
+          photoURL: photo
         })
+        form.reset()
+        Swal.fire("Successfully!", "Your Account Is created", "success");
         navigate('/')
     })
     .catch(error=>{
         console.log(error)
     })
+    
       };
   return (
     <div
@@ -51,6 +57,17 @@ const SignUp = () => {
                 type="text"
                 placeholder="Name"
                 name="name"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo Url</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Photo-Url"
+                name="photo"
                 className="input input-bordered"
               />
             </div>
