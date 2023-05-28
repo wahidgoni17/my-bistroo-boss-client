@@ -1,6 +1,12 @@
-html{
+html {
   background-color: white !important;
   color: black !important;
+}
+.drawer-side a.active {
+  color: white;
+}
+.drawer-side a {
+  background-color: transparent;
 }
 @tailwind base;
 @tailwind components;
