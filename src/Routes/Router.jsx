@@ -13,6 +13,7 @@ import Reservation from "../Pages/DashBoard/Reservation/Reservation";
 import PaymentHistory from "../Pages/DashBoard/PaymentHistory/PaymentHistory";
 import Bookings from "../Pages/DashBoard/Bookings/Bookings";
 import Payment from "../Pages/DashBoard/Payment/Payment";
+import AllUsers from "../Pages/DashBoard/AllUsers/AllUsers";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,10 @@ const Router = createBrowserRouter([
       {
         path: "mycart",
         element: <MyCart></MyCart>
+      },
+      {
+        path: "allusers",
+        element: <AllUsers></AllUsers>
       },
       {
         path: "home",

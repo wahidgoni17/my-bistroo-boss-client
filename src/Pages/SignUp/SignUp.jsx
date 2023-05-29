@@ -5,33 +5,47 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { useContext } from "react";
 import { updateProfile, getAuth } from "firebase/auth";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 const auth = getAuth();
 const SignUp = () => {
-    const { newUser } = useContext(AuthContext);
-    const navigate = useNavigate()
-    const handleSignUp = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const photo = form.photo.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(name, email, password);
-        newUser(email, password)
-    .then(result=>{
-        updateProfile(auth.currentUser,{
+  const { newUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
+    newUser(email, password)
+      .then((result) => {
+        updateProfile(auth.currentUser, {
           displayName: name,
-          photoURL: photo
+          photoURL: photo,
+        });
+        const saveUser = {name: name, email: email}
+        fetch("http://localhost:4555/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
         })
-        form.reset()
-        Swal.fire("Successfully!", "Your Account Is created", "success");
-        navigate('/')
-    })
-    .catch(error=>{
-        console.log(error)
-    })
-    
-      };
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              form.reset();
+              Swal.fire("Successfully!", "Your Account Is created", "success");
+              navigate("/");
+            }
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div
       style={{ backgroundImage: `url("${bgimg}")` }}
@@ -107,6 +121,7 @@ const SignUp = () => {
               Go to Login
             </Link>
           </h1>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

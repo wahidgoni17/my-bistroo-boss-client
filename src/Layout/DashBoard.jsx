@@ -7,14 +7,18 @@ import {
   FaCalendarCheck,
   FaBars,
   FaShoppingBag,
-  FaEnvelopeOpenText
-  
+  FaUtensils,
+  FaUsers,
+  FaBook,
 } from "react-icons/fa";
+import { TfiMenuAlt } from "react-icons/tfi";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 
 const DashBoard = () => {
   const [cart] = useCart();
+
+  const isAdmin = true;
   return (
     <>
       <Helmet>
@@ -37,39 +41,78 @@ const DashBoard = () => {
           <ul className="menu p-4 w-64 bg-[#D1A054]  text-black">
             {/* <!-- Sidebar content here --> */}
             <h1 className="text-4xl font-bold p-3 mb-5">Bistroo Boss</h1>
-            <li>
-              <NavLink to="/dashboard/home">
-                <FaHome />
-                User Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/reservation">
-                <FaCalendar />
-                Reservation
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/history">
-                <FaWallet />
-                Payment History
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/mycart">
-                <FaShoppingCart></FaShoppingCart>
-                My Cart
-                <span className="badge badge-secondary">
-                  +{cart?.length || 0}
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/bookings">
-                <FaCalendarCheck />
-                My Bookings
-              </NavLink>
-            </li>
+
+            {isAdmin ? (
+              <>
+                <li>
+                  <NavLink to="/dashboard/home">
+                    <FaHome />
+                    Admin Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/reservation">
+                    <FaUtensils/>
+                    Add Items
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/history">
+                    <TfiMenuAlt/>
+                    Manage Items
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/mycart">
+                    <FaBook/>
+                    Manage Bookings
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/allusers">
+                    <FaUsers/>
+                    All Users
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink to="/dashboard/home">
+                    <FaHome />
+                    User Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/reservation">
+                    <FaCalendar />
+                    Reservation
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/history">
+                    <FaWallet />
+                    Payment History
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/mycart">
+                    <FaShoppingCart></FaShoppingCart>
+                    My Cart
+                    <span className="badge badge-secondary">
+                      +{cart?.length || 0}
+                    </span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/bookings">
+                    <FaCalendarCheck />
+                    My Bookings
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             <div className="divider"></div>
             <li>
               <NavLink to="/">

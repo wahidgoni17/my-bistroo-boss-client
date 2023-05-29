@@ -9,6 +9,7 @@ import bgimg from "../../assets/others/authentication.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 const Login = () => {
   const { googleLogIn, logIn } = useContext(AuthContext);
   const [disabled, setDisabled] = useState(true);
@@ -108,6 +109,7 @@ const Login = () => {
               Create an Account
             </Link>
           </h1>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
