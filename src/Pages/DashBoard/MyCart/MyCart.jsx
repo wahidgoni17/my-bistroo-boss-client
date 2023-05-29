@@ -47,7 +47,7 @@ const MyCart = () => {
           <Link to="/dashboard/payment">Pay</Link>
         </button>
       </div>
-      <div className="overflow-x-auto w-full px-5 py-10">
+      <div className="overflow-x-auto text-white w-full px-5 py-10">
         <table className="table w-full">
           {/* head */}
           <thead>

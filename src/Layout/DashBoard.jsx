@@ -14,11 +14,13 @@ import {
 import { TfiMenuAlt } from "react-icons/tfi";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 
 const DashBoard = () => {
   const [cart] = useCart();
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin()
 
-  const isAdmin = true;
   return (
     <>
       <Helmet>
