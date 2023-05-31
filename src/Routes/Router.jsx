@@ -14,6 +14,9 @@ import PaymentHistory from "../Pages/DashBoard/PaymentHistory/PaymentHistory";
 import Bookings from "../Pages/DashBoard/Bookings/Bookings";
 import Payment from "../Pages/DashBoard/Payment/Payment";
 import AllUsers from "../Pages/DashBoard/AllUsers/AllUsers";
+import AddItems from "../Pages/DashBoard/AddItems/AddItems";
+import AdminRoutes from "./AdminRoutes";
+import ManageItems from "../Pages/DashBoard/ManageItems/ManageItems";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -50,8 +53,16 @@ const Router = createBrowserRouter([
         element: <MyCart></MyCart>
       },
       {
+        path: "additem",
+        element: <AdminRoutes><AddItems></AddItems></AdminRoutes>
+      },
+      {
+        path: "manageitems",
+        element: <AdminRoutes><ManageItems></ManageItems></AdminRoutes>
+      },
+      {
         path: "allusers",
-        element: <AllUsers></AllUsers>
+        element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
       },
       {
         path: "home",
