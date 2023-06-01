@@ -46,45 +46,61 @@ const Router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
-    children:[
+    element: (
+      <PrivateRoute>
+        <DashBoard></DashBoard>
+      </PrivateRoute>
+    ),
+    children: [
       {
         path: "mycart",
-        element: <MyCart></MyCart>
-      },
-      {
-        path: "additem",
-        element: <AdminRoutes><AddItems></AddItems></AdminRoutes>
-      },
-      {
-        path: "manageitems",
-        element: <AdminRoutes><ManageItems></ManageItems></AdminRoutes>
-      },
-      {
-        path: "allusers",
-        element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
+        element: <MyCart></MyCart>,
       },
       {
         path: "home",
-        element: <UserHome></UserHome>
+        element: <UserHome></UserHome>,
       },
       {
         path: "reservation",
-        element: <Reservation></Reservation>
+        element: <Reservation></Reservation>,
       },
       {
         path: "history",
-        element: <PaymentHistory></PaymentHistory>
+        element: <PaymentHistory></PaymentHistory>,
       },
       {
         path: "bookings",
-        element: <Bookings></Bookings>
+        element: <Bookings></Bookings>,
       },
       {
         path: "payment",
-        element: <Payment></Payment>
+        element: <Payment></Payment>,
       },
-    ]
+      {
+        path: "additem",
+        element: (
+          <AdminRoutes>
+            <AddItems></AddItems>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "manageitems",
+        element: (
+          <AdminRoutes>
+            <ManageItems></ManageItems>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "allusers",
+        element: (
+          <AdminRoutes>
+            <AllUsers></AllUsers>
+          </AdminRoutes>
+        ),
+      },
+    ],
   },
 ]);
 
