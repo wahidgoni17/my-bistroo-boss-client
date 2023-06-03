@@ -18,7 +18,6 @@ import useAdmin from "../Hooks/useAdmin";
 
 const DashBoard = () => {
   const [cart] = useCart();
-  // const isAdmin = true;
   const [isAdmin] = useAdmin();
 
   return (
@@ -47,7 +46,7 @@ const DashBoard = () => {
             {isAdmin ? (
               <>
                 <li>
-                  <NavLink to="/dashboard/home">
+                  <NavLink to="/dashboard/adminhome">
                     <FaHome />
                     Admin Home
                   </NavLink>
@@ -80,7 +79,7 @@ const DashBoard = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to="/dashboard/home">
+                  <NavLink to="/dashboard/userhome">
                     <FaHome />
                     User Home
                   </NavLink>
