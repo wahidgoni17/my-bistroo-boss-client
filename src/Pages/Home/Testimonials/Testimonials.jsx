@@ -11,7 +11,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4555/review")
+    fetch("https://bistro-boss-server-gules-seven.vercel.app/review")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

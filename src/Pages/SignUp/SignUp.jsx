@@ -25,7 +25,7 @@ const SignUp = () => {
           photoURL: photo,
         });
         const saveUser = {name: name, email: email}
-        fetch("http://localhost:4555/users", {
+        fetch("https://bistro-boss-server-gules-seven.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

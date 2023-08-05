@@ -14,7 +14,7 @@ const AllUsers = () => {
   });
   const handleDelete = (user) => {};
   const handleMakeAdmin = (user) =>{
-    fetch(`http://localhost:4555/users/admin/${user._id}`,{
+    fetch(`https://bistro-boss-server-gules-seven.vercel.app/users/admin/${user._id}`,{
         method: "PATCH"
     })
     .then(res => res.json())
